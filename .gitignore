@@ -1,0 +1,28 @@
+# Ignore application secrets files
+appsettings.json
+appsettings.Development.json
+
+# Ignore build output
+/bin/
+/obj/
+
+# Ignore publish directories
+/publish/
+
+# Ignore Rider-specific files
+.idea/
+
+# Ignore logs and temporary files
+*.log
+*.temp
+
+# Ignore IDE or OS-specific files
+.DS_Store
+Thumbs.db
+
+# Ignore user-specific NuGet package cache
+.nuget/
+
+# Ignore Visual Studio files
+.vs/
+.vscode/
