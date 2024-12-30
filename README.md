@@ -112,8 +112,9 @@ Next Steps
 In the SyntaxSiblings-DevHub repository README:
 Linked Projects
 
-    Strava REST API: [SyntaxSiblings repo] (https://github.com/slimmpylk/SyntaxSiblings-DevHub)
-        This repository contains the backend for integrating Strava workout data with web applications. It's connected to this project and used to display real-time workout statistics on the portfolio site.
+[SyntaxSiblings repo] (https://github.com/slimmpylk/SyntaxSiblings-DevHub)
+
+This repository contains the backend for integrating Strava workout data with web applications. It's connected to this project and used to display real-time workout statistics on the portfolio site.
 
 License
 
