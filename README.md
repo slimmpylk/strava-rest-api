@@ -1,124 +1,128 @@
 (READY FOR LAUNCH)
 
-demo picture from website ![image](https://github.com/user-attachments/assets/8353e132-f5fc-43d9-9890-6a127f0c9a04)
+Demo from the Website
+![image](https://github.com/user-attachments/assets/062f7b65-7ed5-4fe0-b1e2-34b1a21f6aab)
 
+Strava REST API Integration (Overview)
 
-Strava REST API Integration
+This project lets you grab the latest workout data from Strava and make it easily available on your personal website or application—perfect for showcasing recent runs, rides, or other activities. You’ll see details like:
 
-This project provides an API to fetch the latest workout data from Strava, leveraging Strava's official API. It enables seamless integration with personal websites or applications to display recent workout information, such as distance, duration, and type of activity.
-Features
+    Distance
+    Duration
+    Type of activity
 
-    Fetches the latest workout details from Strava (distance, duration, type, etc.)
-    Uses OAuth 2.0 authentication for secure access to the Strava API
-    Returns the latest workout data in a clean, structured format
+Key Features
+
+    Easy Access to Latest Workout
+    Automatically pulls your most recent Strava workout details (like distance, time, type).
+
+    Secure OAuth 2.0
+    Uses Strava’s official OAuth flow, so your data stays protected.
+
+    Clean JSON Response
+    Retrieves and returns your workout data in a well-structured format for you to display however you want.
+
+Development Environment
+
+    Operating System: Arch Linux
+    IDE for .NET (API): JetBrains Rider
+    IDE for Front-End (React, etc.): WebStorm
+    Version Control: GitKraken + Git Bash
+    Hosting: Azure (Linux-based App Service with .NET 8)
+
+    These tools aren’t mandatory; you can choose any setup you like. But if you want the exact environment used in this project, the above combination works seamlessly on Arch Linux.
 
 Setup Guide
 
-Setting up the Strava REST API on your project requires a few steps. Follow these instructions to get started:
-
+Below is the recommended setup path:
 1. Create a Strava API Application
-
-Before you can access Strava's workout data, you'll need to create an API application on Strava. Here's how you do that:
 
     Go to the Strava API Developer Page.
     Click Create & Manage your App.
-    Fill out the application details. Make sure to include your domain or localhost URL for testing.
-        Authorization Callback Domain: Use your deployed API URL or http://localhost:5000 for local testing.
-    Once created, you will get your Client ID, Client Secret, and Refresh Token (you’ll need to authenticate once to get this token).
+    Enter your application details. You’ll need to specify a domain or localhost URL (for local testing).
+        Authorization Callback Domain: Either your live hosted domain or http://localhost:5000 for local tests.
+    After creating the app, Strava provides you with a Client ID, Client Secret, and Refresh Token.
+        You’ll only see your Refresh Token after an initial authentication flow, so be sure to note it down.
 
 2. Configure Your Project
 
-After setting up your Strava API credentials, you need to configure your project to use them:
-a) Set Up Azure (If deploying to Azure)
+You’ll need to tell your .NET API how to use your Strava credentials. You have two main options:
+(a) Deploying to Azure
 
-    Create an Azure App Service to host your REST API.
-        Set the runtime stack to .NET 8 and the operating system to Linux.
-        Use the Free tier for testing (or choose a higher tier based on your needs).
-    Configure Application Settings:
-        In Azure, navigate to your web app, go to Configuration, and add the following application settings:
-            Strava:ClientId: Your Strava Client ID.
-            Strava:ClientSecret: Your Strava Client Secret.
-            Strava:RefreshToken: Your Strava Refresh Token (this is a one-time process you can retrieve from Strava after authentication).
+    Create an Azure App Service for your REST API.
+        Select the .NET 8 runtime and Linux as the OS.
+        The Free tier is fine for testing.
+    Under Configuration → Application Settings in Azure, add the following keys:
+        Strava:ClientId
+        Strava:ClientSecret
+        Strava:RefreshToken
 
-b) Configure Locally
+(b) Running Locally
 
-If you're running the API locally, create a appsettings.json file in the root of your project:
+    In the root of your .NET project, create a file called appsettings.json with the following format:
 
-{
-"Strava": {
-"ClientId": "your_strava_client_id",
-"ClientSecret": "your_strava_client_secret",
-"RefreshToken": "your_strava_refresh_token"
-}
-}
+    {
+      "Strava": {
+        "ClientId": "your_strava_client_id",
+        "ClientSecret": "your_strava_client_secret",
+        "RefreshToken": "your_strava_refresh_token"
+      }
+    }
+
+    Make sure this file is not committed to a public repo, since it contains sensitive information.
 
 3. Running the Application Locally
 
-To run the API locally:
+    Install .NET SDK (if you haven’t already). Check by running:
 
-    Ensure you have .NET SDK installed.
-        You can check if it's installed by running dotnet --version.
-        If not, install it from here.
+dotnet --version
 
-    Open the terminal in the project folder and run:
+From your project’s folder, run:
 
     dotnet run
 
-    Your Strava API should now be accessible on http://localhost:5000. You can test it by visiting:
-        http://localhost:5000/api/strava/latest-workout
+    Once it’s up and running, visit http://localhost:5000/api/strava/latest-workout to see your latest workout data in JSON format.
 
 4. Deploying to Azure
 
-Once your API is working locally, you can deploy it to Azure using the Azure Portal or via Git. Follow these steps:
+    Push your project to a Git repository (GitHub, Azure Repos, or your own private repo).
+    In Azure Portal → Your App Service → Deployment Center, link it to your repo.
+    When you push changes to your chosen branch, Azure will build and deploy automatically.
 
-    Create a Git repository for your project (if not already done).
-    In the Azure Portal, go to Deployment Center in your App Service settings.
-    Connect your repository (GitHub, Azure Repos, etc.).
-    Push your project to your repository, and Azure will automatically deploy your API.
+    Tip: If you prefer to deploy manually, you can do so via GitKraken or Git Bash, or even use the Azure CLI. The important part is making sure your environment variables are set in Azure so the API can connect to Strava.
 
 5. Using the API
 
-Once everything is set up, you can access the API endpoint to retrieve the latest workout:
+Endpoint: GET /api/strava/latest-workout
 
-    Endpoint: GET /api/strava/latest-workout
-
-This will return the most recent workout data, including:
-
-    Name of the activity
-    Distance (in meters)
-    Moving Time (in seconds)
-    Type (e.g., Run, Bike)
-
-Example Request & Response
-Request
-
-GET https://your-api-url/api/strava/latest-workout
-
-Response
+Example JSON Response:
 
 {
-"name": "Morning Run",
-"distance": 10000.0,
-"moving_time": 3600.0,
-"total_elevation_gain": 150.0,
-"type": "Run"
+  "name": "Morning Run",
+  "distance": 10000.0,
+  "moving_time": 3600.0,
+  "total_elevation_gain": 150.0,
+  "type": "Run"
 }
 
+This data can then be displayed on any webpage or frontend app (e.g., React or Angular).
 Next Steps
 
-    Add user profile info: You can extend the API to include user profile data, such as weight, height, and bio.
-    Fetch more activity details: The API can be modified to pull more details, like heart rate zones or segment performance.
-    Create a front-end to display the data: Use React, Angular, or plain HTML to display the latest workout data on your website.
+    Show More Profile Info: Add Strava user data, such as profile stats or bio.
+    Fetch More Activity Details: Pull heart rate, power data, or segment performances.
+    Front-End Integration: Use React or Angular to create charts, graphs, or other UI elements for your workout metrics.
 
-    Regarding the connection between the two repositories (SyntaxSiblings-DevHub and strava-rest-api), you can add a simple note in your README.md of SyntaxSiblings-DevHub to show the relationship. For example:
+Linked Repositories
 
-In the SyntaxSiblings-DevHub repository README:
-Linked Projects
+If you’re also working with the SyntaxSiblings-DevHub repository, you can cross-reference the two projects by adding a short note in the README.md, stating:
 
-[SyntaxSiblings repo] (https://github.com/slimmpylk/SyntaxSiblings-DevHub)
+    Strava Integration
+    This repository integrates with the Strava REST API Project to display real-time workout statistics on the portfolio site.
 
-This repository contains the backend for integrating Strava workout data with web applications. It's connected to this project and used to display real-time workout statistics on the portfolio site.
+License & Credits
 
-License
+Feel free to use or adapt this code for personal projects. Just be sure to keep your Strava keys and tokens secure. Always remember:
 
-Feel free to use this code for personal projects or contributions. Please make sure to keep the API keys secure.
+    “With great power comes great responsibility”—especially when managing API credentials.
+
+That’s it! You now have a fully working Strava REST API integration that can fetch and display the latest workout data. Enjoy hacking on Arch Linux with JetBrains Rider, WebStorm, and GitKraken, and let us know about the cool stuff you build!
