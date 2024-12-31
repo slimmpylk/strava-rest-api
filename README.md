@@ -1,4 +1,7 @@
-(not yet online)
+(READY FOR LAUNCH)
+
+demo picture from website ![image](https://github.com/user-attachments/assets/8353e132-f5fc-43d9-9890-6a127f0c9a04)
+
 
 Strava REST API Integration
 
