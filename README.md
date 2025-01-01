@@ -3,6 +3,12 @@
 Demo from the Website
 ![image](https://github.com/user-attachments/assets/062f7b65-7ed5-4fe0-b1e2-34b1a21f6aab)
 
+
+UML chart
+![Flowchart](https://github.com/user-attachments/assets/fc4d2704-4a8b-4471-9f67-13ca374b07b3)
+
+
+
 Strava REST API Integration (Overview)
 
 This project lets you grab the latest workout data from Strava and make it easily available on your personal website or application—perfect for showcasing recent runs, rides, or other activities. You’ll see details like:
