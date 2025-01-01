@@ -1,13 +1,5 @@
 (READY FOR LAUNCH)
 
-Demo from the Website
-![image](https://github.com/user-attachments/assets/062f7b65-7ed5-4fe0-b1e2-34b1a21f6aab)
-
-
-UML chart
-![Flowchart](https://github.com/user-attachments/assets/fc4d2704-4a8b-4471-9f67-13ca374b07b3)
-
-
 
 Strava REST API Integration (Overview)
 
@@ -132,3 +124,14 @@ Feel free to use or adapt this code for personal projects. Just be sure to keep 
     “With great power comes great responsibility”—especially when managing API credentials.
 
 That’s it! You now have a fully working Strava REST API integration that can fetch and display the latest workout data. Enjoy hacking on Arch Linux with JetBrains Rider, WebStorm, and GitKraken, and let us know about the cool stuff you build!
+
+
+
+Demo from the Website
+![image](https://github.com/user-attachments/assets/062f7b65-7ed5-4fe0-b1e2-34b1a21f6aab)
+
+
+UML chart
+![Flowchart](https://github.com/user-attachments/assets/fc4d2704-4a8b-4471-9f67-13ca374b07b3)
+
+
